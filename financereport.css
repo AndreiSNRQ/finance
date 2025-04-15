@@ -42,7 +42,8 @@ body {
   min-height: 100vh;
   background: var(--body-color);
   color: var(--text-color);
-  
+  padding: 0;
+  margin:0;
 }
 
 /* Layout Elements */
@@ -99,9 +100,10 @@ footer {
   width: 0;
   overflow: hidden;
   background: var(--sidebar-color);
-  padding: 3rem 0 1rem;
+  padding: .5rem 0 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 100px;
   transition: var(--tran-03);
 }
@@ -126,7 +128,13 @@ footer {
 }
 
 .sidebar a .mdi {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+}
+.content button i{
+  padding: .4rem 0;
+}
+.content-header{
+  margin-top:-.1rem;
 }
 
 .sidebar a:hover {
