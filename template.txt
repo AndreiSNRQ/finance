@@ -1,3 +1,4 @@
 <?php
- include 'head.php';
+    $title="lagay molang title ng module  para malagay sa header";
+    include 'head.php';
 ?>
