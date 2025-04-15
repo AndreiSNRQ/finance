@@ -1,0 +1,677 @@
+/* Imports */
+@import url(../material-icons/css/materialdesignicons.css);
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/Poppins-Regular.ttf);
+}
+
+/* Root Variables */
+:root {
+  --body-color: #fff;
+  --sidebar-color: #d4ebf8;
+  --primary-color: #0a3981;
+  --primary-color-light: #1f509a;
+  --toggle-color: #e38e49;
+  --text-color: #000;
+
+  --btn-green: rgb(43, 143, 43);
+  --btn-red: rgb(224, 44, 44);
+  --btn-blue: rgb(34, 34, 186);
+  --btn-orange: orange;
+
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+
+  --module-content-width: 80%;
+}
+
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Roboto, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--body-color);
+  color: var(--text-color);
+  
+}
+
+/* Layout Elements */
+header,
+footer {
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  width: 100%;
+}
+
+/* Typography */
+.header-content {
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: var(--primary-color);
+  border-bottom: 5px double var(--toggle-color);
+}
+
+.header-content h1,
+.header-content h2 {
+  font-family: "Times New Roman", Times, serif;
+  text-transform: uppercase;
+}
+
+.header-content h1 {
+  color: var(--toggle-color);
+  font-size: 1.5rem;
+}
+
+.header-content h2 {
+  color: var(--body-color);
+}
+
+.header-content img {
+  width: 60px;
+  height: auto;
+  border-radius: 100%;
+  border: 3px solid var(--toggle-color);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 0;
+  overflow: hidden;
+  background: var(--sidebar-color);
+  padding: 3rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  transition: var(--tran-03);
+}
+
+.sidebar.open {
+  width: 300px;
+  padding-left: 10px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 12px 10px;
+  margin: 5px 0;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-color);
+  border-radius: 8px 0 0 8px;
+  transition: var(--tran-03);
+}
+
+.sidebar a .mdi {
+  font-size: 1.2rem;
+}
+
+.sidebar a:hover {
+  background: var(--primary-color);
+  color: var(--body-color);
+}
+
+.js-sidenav-toggle {
+  background-color: var(--primary-color);
+  color: var(--body-color);
+  padding: 4px 8px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  font-size: 1.5rem;
+  transition: var(--tran-03);
+  outline-color: transparent;
+}
+
+.js-sidenav-toggle:hover {
+  background-color: var(--toggle-color);
+  color: var(--text-color);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--body-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+}
+
+th {
+  background-color: var(--primary-color-light);
+  color: var(--body-color);
+  font-weight: 600;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: var(--sidebar-color);
+  transition: var(--tran-03);
+}
+
+/* Utility */
+li {
+  list-style: none;
+}
+
+.module-content {
+  padding: 15px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-header {
+  position: relative;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--body-color);
+  border-top: 5px double var(--toggle-color);
+}
+
+/* Audit Trail */
+.audit-trail {
+  width: var(--module-content-width);
+}
+
+.audit-trail .search-container {
+  margin-bottom: 15px;
+}
+
+.audit-trail .search-container input {
+  padding: 8px;
+  width: 300px;
+  max-width: 100%;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+}
+
+/* Billing Module */
+.billing-container {
+  background-color: var(--body-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: var(--module-content-width);
+}
+
+.billing-container .search-section {
+  margin-bottom: 20px;
+}
+
+.billing-container input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.billing-container .student-info {
+  background: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.billing-container .student-info h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.billing-container .student-info p {
+  margin: 2px 0;
+  color: #666;
+}
+
+.billing-container .balance-summary {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.billing-container .balance-summary div {
+  flex: 1;
+  background: #f3f3f3;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.billing-container .status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--body-color);
+  font-size: 12px;
+}
+
+.billing-container .paid {
+  background-color: var(--btn-green);
+}
+
+.billing-container .partial {
+  background-color: var(--btn-orange);
+}
+
+.billing-container .not-paid {
+  background-color: var(--btn-red);
+}
+
+/* Scholarship Module */
+.scholarship {
+  width: var(--module-content-width);
+  margin-top: 20px;
+}
+
+.scholarship .tabs {
+  width: var(--module-content-width);
+  margin: 50px 0 20px;
+}
+
+.scholarship button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: var(--primary-color-light);
+  color: var(--body-color);
+  border: none;
+  border-radius: 5px;
+}
+
+.scholarship button.active {
+  background: var(--primary-color-light);
+}
+
+.scholarship .section {
+  display: none;
+}
+
+.scholarship .section.active {
+  display: block;
+}
+
+.scholarship .btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--body-color);
+}
+
+.scholarship .action {
+  text-align: center;
+}
+
+.scholarship .approve {
+  background: var(--btn-green);
+}
+
+.scholarship .reject {
+  background: var(--btn-red);
+}
+
+.scholarship .view {
+  background: var(--btn-blue);
+}
+
+.scholarship .add-btn {
+  margin: 10px 0;
+  background: var(--btn-green);
+}
+
+.scholarship #addScholarshipForm {
+  display: flex;
+  padding: 20px;
+  background: var(--body-color);
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.scholarship input,
+.scholarship select {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+/* Fee Assessment */
+.fee-assessment {
+  width: var(--module-content-width);
+}
+
+.fee-assessment h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.fee-assessment .search-bar {
+  margin-bottom: 1.5rem;
+}
+
+.fee-assessment .search-bar label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.fee-assessment #studentSelect {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--sidebar-color);
+  transition: var(--tran-03);
+}
+
+.fee-assessment #studentSelect:hover {
+  border-color: var(--primary-color);
+}
+
+.fee-assessment .summary-panel {
+  background-color: var(--sidebar-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.fee-assessment .summary-panel p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.fee-assessment .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.fee-assessment .actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color-light);
+  color: var(--body-color);
+  cursor: pointer;
+  transition: var(--tran-04);
+}
+
+.fee-assessment .actions button:hover {
+  background-color: var(--toggle-color);
+}
+
+/* Refund */
+
+.refund {
+  width: var(--module-content-width);
+  margin-top: 20px;
+}
+
+.filter-bar {
+  margin: 1rem 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#refundDetails {
+  background-color: var(--body-color);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+}
+
+.refund-content {
+  background-color: var(--body-color);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--body-color);
+  border-radius: 12px;
+  padding: 25px 30px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.modal-section h4 {
+  margin-bottom: 8px;
+  color: var(--primary-color-light);
+}
+
+.modal-section textarea {
+  width: 442px;
+  height: 143px;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.modal-section p {
+  margin: 3px 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6c757d;
+  color: var(--body-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.approve-btn,
+.deny-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  color: var(--body-color);
+  cursor: pointer;
+}
+
+.approve-btn {
+  background-color: var(--btn-green);
+}
+
+.deny-btn {
+  background-color: var(--btn-red);
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background-color: var(--btn-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  padding: 2rem;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--primary-color-light);
+  color: white;
+  transition: var(--tran-03);
+}
+
+.tab:hover {
+  background-color: var(--primary-color);
+}
+
+.date-picker {
+  margin-bottom: 1.5rem;
+}
+
+.date-picker input {
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
+.kpi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--sidebar-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.detail-view {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.detail-view h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
