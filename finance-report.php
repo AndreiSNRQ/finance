@@ -1,0 +1,153 @@
+<?php
+require_once 'php/includes/auth.php';
+
+$user_id = $_SESSION['user_id'];
+$username = htmlspecialchars($_SESSION['username']); // safe output
+$user_role = $_SESSION['user_role'];
+requireLogin();
+requireRole('admin');
+
+
+
+// Example of how to use the addAuditLog function
+
+require_once 'php/includes/db.php'; // Database connection
+require_once 'php/includes/add_audit.php'; // Audit log functions
+$student_id = 123;
+
+addAuditLog($pdo, 'DELETE', 'students', $student_id, 'Deleted student record.');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/fms-style.css">
+    <link rel="shortcut icon" href="./assets/favicon/SIS.ico" type="image/x-icon">
+    <title>Finance Management</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="./assets/img/SIS-logo.png" alt="Student Information System Logo">
+            <div>
+                <h1>Student Information System</h1>
+                <h2>Finance</h2>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <aside class="sidebar">
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="student-fees.php"><span class="mdi mdi-account-school-outline"></span><span>Student
+                                Fees</span></a>
+                    </li>
+                    <li><a href="billing-invoicing.php"><span class="mdi mdi-invoice-list-outline"></span><span>Billing
+                                Invoicing</span></a>
+                    </li>
+                    <li><a href="scholarship.php"><span class="mdi mdi-certificate-outline"></span>
+                            <span>Scholarship</span></a></li>
+                    <li><a href="refund.php"><span class="mdi mdi-cash-refund"></span> <span>Refund</span></a></li>
+                    <li><a href="financial-report.php"><span class="mdi mdi-finance"></span> <span>Financial
+                                Report</span></a></li>
+                    <li><a href="audit-trail.php"><span class="mdi mdi-monitor-eye"></span> <span>Audit
+                                Trail</span></a></li>
+                </ul>
+            </nav>
+            <nav aria-label="User options">
+                <ul>
+                    <li><a href="./php/logout.php"><span class="mdi mdi-logout"></span> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+            </nav>
+        </aside>
+        <section class="content">
+            <div class="content-header">
+                <button class="js-sidenav-toggle" aria-label="Toggle navigation menu">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <h3>Financial Report</h3>
+            </div>
+            <article class="module-content">
+                <div class="finance">
+                    <div class="tabs">
+                        <div class="tab">Monthly</div>
+                        <div class="tab">Annual</div>
+                    </div>
+                    <div class="date-picker">
+                        <label for="from">From:</label>
+                        <input type="date" id="from" name="from">
+                        <label for="to">To:</label>
+                        <input type="date" id="to" name="to">
+                    </div>
+
+                    <div class="kpi-cards">
+                        <div class="card"><strong>Total Collected:</strong> ₱120,000</div>
+                        <div class="card"><strong>Total Due:</strong> ₱30,000</div>
+                        <div class="card"><strong>Total Scholarships Awarded:</strong> ₱50,000</div>
+                        <div class="card"><strong>Total Refunds:</strong> ₱10,000</div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Collected</th>
+                                <th>Due</th>
+                                <th>Scholarships</th>
+                                <th>Refunds</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>January</td>
+                                <td>₱30,000</td>
+                                <td>₱5,000</td>
+                                <td>₱10,000</td>
+                                <td>₱2,000</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="detail-view">
+                        <h3>Report Details</h3>
+                        <p><strong>Report Period:</strong> January 1 - January 31, 2025</p>
+                        <p><strong>Report Type:</strong> Monthly</p>
+                        <p><strong>Summary:</strong> Total transactions reviewed include collections, dues,
+                            scholarships,
+                            and refunds for the month of January.</p>
+                        <p><strong>Generated By:</strong> Finance Admin</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <address>
+            <p>For inquiries please contact 000-0000<br>
+                Email: sisfinance3220@gmail.com</p>
+        </address>
+        <p>&copy; 2025 Student Information System<br>All Rights Reserved</p>
+    </footer>
+    <script src="./assets/js/fms-script.js"></script>
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                alert(`Switched to ${tab.textContent} Report`);
+            });
+        });
+    </script>
+</body>
+
+</html>
